@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/static/style.css" rel="stylesheet">
+</head>
+<body>
+<nav>
+    <ul>
+    <li><a href="{{ url_for('index') }}">Home</a></li>
+    <li class="selected"><a href="{{ url_for('factor') }}">Factors</a></li>
+    <li><a href="{{ url_for('word') }}">Word count</a></li>
+    </ul>
+</nav>
+
+{% block factors %}
+    <h1> Factor this </h1>
+    <form class="form"action="/factor" method="post">
+        <label id="label">Enter a number:</label>
+        <input type="number"name="fact"><br>
+        <input type="submit"value="factor">
+    </form>
+<br>
+    {% if form %}
+        <hr>
+    {% for f in form %}
+        <ul>
+            <li>{{ f }}</li>
+        </ul>
+    {% endfor %}
+    {% if primeN %}
+        <h1 id="header">{{ form[-1] }} It is not a prime number</h1>
+    {% else %}
+        <h1 id="header">{{ form[-1] }} It is a prime number</h1>
+
+    {% endif %}
+    {% endif %}
+{% endblock %}
+
+
+
+
+
+
+</body>
+</html>

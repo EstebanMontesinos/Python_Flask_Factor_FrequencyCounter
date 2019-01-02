@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/static/style.css"rel="stylesheet">
+</head>
+<body>
+<nav>
+    <ul>
+    <li><a href="{{ url_for('index') }}">Home</a></li>
+    <li><a href="{{ url_for('factor') }}">Factors</a></li>
+    <li class="selected"><a href="{{ url_for('word') }}">Word count</a></li>
+    </ul>
+</nav>
+{% block factors %}
+    <form method="post">
+        <h1>Compute word frequencies</h1>
+        <p>Enter words to count:</p>
+        <textarea id="textarea"name="words"rows="15"cols="55"></textarea>
+        <br>
+        <input type="submit"value="Submit">
+    </form>
+    <br>
+    {% if frequency %}
+        <hr>
+        <table border="1"style="width:50%"align="center" >
+        <tr>
+            <th >Words</th>
+            <th >Count</th>
+        </tr>
+        {% for key,value in frequency.items()|sort%}
+            <tr>
+                <td>{{ key }}</td>
+                <td>{{ value }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+body{
+    background-color: white;
+}
+nav{
+    background-color: black;
+    width: 100%;
+    text-align: center;
+}
+nav ul{
+    padding:10px;
+    margin:0px;
+    list-style-type:none;
+    text-align: center;
+}
+nav ul li{
+    display:inline;
+    padding:5px;
+    text-align: center;
+}
+nav ul li a:link,nav ul li a:visited{
+    color:white;
+}
+nav ul li a:hover{
+    color:green
+}
+nav ul li.selected{
+    background-color: silver;
+}
